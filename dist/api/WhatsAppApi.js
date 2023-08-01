@@ -17,6 +17,7 @@ class WhatsAppApi extends events_1.EventEmitter {
         this.app.use(express_1.default.urlencoded({ extended: true }));
         this.app.post('/', (req, res) => {
             const data = req.body;
+            this.emit('any', data);
             if (data.object === 'whatsapp_business_account') {
                 data.entry.forEach((entry) => {
                     entry.changes.forEach((change) => {
@@ -24,7 +25,6 @@ class WhatsAppApi extends events_1.EventEmitter {
                         if (change.field === 'messages') {
                             const messageValue = change.value;
                             (_a = messageValue.messages) === null || _a === void 0 ? void 0 : _a.forEach((message) => {
-                                console.log(message);
                                 if ('text' in message) {
                                     this.emit('text', message, message.from);
                                 }
@@ -56,4 +56,4 @@ class WhatsAppApi extends events_1.EventEmitter {
     }
 }
 exports.WhatsAppApi = WhatsAppApi;
-//# sourceMappingURL=WhatsAppApi.js.map
+//# sourceMappingURL=WAServer.js.map

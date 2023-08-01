@@ -39,13 +39,20 @@ export class WhatsAppMessageSender {
         }
     }
 
-    async markMessageAsRead(messageId: string): Promise<AxiosResponse<any>> {
+    async markMessageAsRead(messageId: string): Promise<AxiosResponse | undefined> {
         const markReadPayload: MarkReadPayload = {
             messaging_product: "whatsapp",
             status: "read",
             message_id: messageId
         };
 
-        return axios.put(`${this.apiURL}/${this.phone}/messages`, markReadPayload, { headers: this.headers });
+        try {
+            console.log(this.phone);
+            const response=axios.put(`${this.apiURL}/${this.phone}/messages`, markReadPayload, { headers: this.headers });
+            return response;
+        } catch (error) {
+            handleAxiosError(error);
+        }
+
     }
 }

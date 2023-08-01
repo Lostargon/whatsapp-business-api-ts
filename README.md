@@ -23,7 +23,7 @@ import { wa, messageModels, webhookModels } from 'whatsapp-business-api-ts';
 Create an instance of the API and send a text message:
 
 ```javascript
-const api = new wa.WhatsAppApi(port, accessToken, phone);
+const api = new wa.WAServer(port, accessToken, phone);
 api.sendMessage('1234567890', 'Hello, World!');
 ```
 

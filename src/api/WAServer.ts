@@ -3,7 +3,7 @@ import { EventEmitter } from 'events';
 import { WhatsAppAccountWebhook, Entry, Change, TextMessage, ImageMessage, StickerMessage, LocationMessage, ButtonMessage } from '../models/WebhookModels';
 import { WhatsAppMessageSender } from './WhatsAppMessageSender';
 
-export class WhatsAppApi extends EventEmitter {
+export class WAServer extends EventEmitter {
     private app: express.Application;
     messageSender: WhatsAppMessageSender;
 
@@ -19,6 +19,7 @@ export class WhatsAppApi extends EventEmitter {
 
         this.app.post('/', (req, res) => {
             const data: WhatsAppAccountWebhook = req.body;
+            this.emit('any',data);
 
             if (data.object === 'whatsapp_business_account') {
                 data.entry.forEach((entry: Entry) => {
@@ -26,7 +27,7 @@ export class WhatsAppApi extends EventEmitter {
                         if (change.field === 'messages') {
                             const messageValue = change.value;
                             messageValue.messages?.forEach((message: TextMessage | ImageMessage | StickerMessage | LocationMessage | ButtonMessage) => {
-                                console.log(message);
+
                                 if ('text' in message) {
                                     this.emit('text', message, message.from);
                                 } else if ('image' in message) {

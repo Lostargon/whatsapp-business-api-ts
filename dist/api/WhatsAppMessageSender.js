@@ -54,7 +54,14 @@ class WhatsAppMessageSender {
                 status: "read",
                 message_id: messageId
             };
-            return axios_1.default.put(`${this.apiURL}/${this.phone}/messages`, markReadPayload, { headers: this.headers });
+            try {
+                console.log(this.phone);
+                const response = axios_1.default.put(`${this.apiURL}/${this.phone}/messages`, markReadPayload, { headers: this.headers });
+                return response;
+            }
+            catch (error) {
+                (0, AxiosErrorHandler_1.handleAxiosError)(error);
+            }
         });
     }
 }

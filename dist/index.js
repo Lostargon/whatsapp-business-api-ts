@@ -24,7 +24,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.webhookModels = exports.messageModels = exports.Server = void 0;
-exports.Server = __importStar(require("./api/WhatsAppApi"));
+var WhatsAppApi_1 = require("./api/WhatsAppApi");
+Object.defineProperty(exports, "Server", { enumerable: true, get: function () { return WhatsAppApi_1.WhatsAppApi; } });
 exports.messageModels = __importStar(require("./models/MessageModels"));
 exports.webhookModels = __importStar(require("./models/WebhookModels"));
 //# sourceMappingURL=index.js.map

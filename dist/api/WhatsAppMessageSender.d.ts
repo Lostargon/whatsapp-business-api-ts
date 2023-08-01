@@ -6,5 +6,5 @@ export declare class WhatsAppMessageSender {
     private headers;
     constructor(accessToken: string, phone: string);
     sendTextMessage(recipientPhoneNumber: string, message: string): Promise<AxiosResponse | undefined>;
-    markMessageAsRead(messageId: string): Promise<AxiosResponse<any>>;
+    markMessageAsRead(messageId: string): Promise<AxiosResponse | undefined>;
 }
