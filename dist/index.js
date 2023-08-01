@@ -15,6 +15,9 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 }) : function(o, v) {
     o["default"] = v;
 });
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
@@ -23,9 +26,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.webhookModels = exports.messageModels = exports.Server = void 0;
-var WhatsAppApi_1 = require("./api/WhatsAppApi");
-Object.defineProperty(exports, "Server", { enumerable: true, get: function () { return WhatsAppApi_1.WhatsAppApi; } });
+exports.webhookModels = exports.messageModels = void 0;
+__exportStar(require("./api/WAServer"), exports);
 exports.messageModels = __importStar(require("./models/MessageModels"));
 exports.webhookModels = __importStar(require("./models/WebhookModels"));
 //# sourceMappingURL=index.js.map
