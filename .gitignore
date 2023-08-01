@@ -1,0 +1,15 @@
+# Dependency directories
+node_modules/
+
+# Build directories
+dist/
+
+# Environment files
+.env
+
+# Editor directories and files
+.idea/
+*.swp
+*.swo
+*.tmp
+*.tsbuildinfo
