@@ -7,7 +7,7 @@ This library provides a seamless interface to interact with the WhatsApp Busines
 Install the package using npm:
 
 ```bash
-npm install whatsapp-business-api-ts
+npm install Lostargon/whatsapp-business-api-ts
 ```
 
 ## Usage

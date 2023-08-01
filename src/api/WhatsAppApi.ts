@@ -55,5 +55,4 @@ export class WhatsAppApi extends EventEmitter {
         return this.messageSender.sendTextMessage(recipient, message);
     }
 
-    // Add similar methods for sending other types of messages (image, audio, interactive) here
 }

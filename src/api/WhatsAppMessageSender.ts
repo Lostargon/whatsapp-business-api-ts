@@ -48,6 +48,4 @@ export class WhatsAppMessageSender {
 
         return axios.put(`${this.apiURL}/${this.phone}/messages`, markReadPayload, { headers: this.headers });
     }
-
-    // Add similar methods for sending other types of messages (image, audio, interactive) here
 }
