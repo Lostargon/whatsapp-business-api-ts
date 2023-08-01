@@ -2,7 +2,7 @@
 node_modules/
 
 # Build directories
-dist/
+
 package-lock.json
 # Environment files
 .env
