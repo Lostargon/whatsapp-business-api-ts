@@ -17,8 +17,9 @@ export class WAServer extends EventEmitter {
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: true }));
 
-        this.app.get('/', (req, res) => {
+        this.app.get('/wa', (req, res) => {
             const hub = req.query;
+            console.log(hub);
             if (hub['hub.mode'] === 'subscribe') {
                 res.status(200).send(hub['hub.challenge']);
             } else {
@@ -26,7 +27,7 @@ export class WAServer extends EventEmitter {
             }
         });
 
-        this.app.post('/', (req, res) => {
+        this.app.post('/wa', (req, res) => {
             const data: WhatsAppAccountWebhook = req.body;
             this.emit('any',data);
 

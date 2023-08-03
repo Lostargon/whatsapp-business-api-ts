@@ -15,8 +15,9 @@ class WAServer extends events_1.EventEmitter {
         this.messageSender = new WhatsAppMessageSender_1.WhatsAppMessageSender(accessToken, phone);
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.urlencoded({ extended: true }));
-        this.app.get('/', (req, res) => {
+        this.app.get('/wa', (req, res) => {
             const hub = req.query;
+            console.log(hub);
             if (hub['hub.mode'] === 'subscribe') {
                 res.status(200).send(hub['hub.challenge']);
             }
@@ -24,7 +25,7 @@ class WAServer extends events_1.EventEmitter {
                 res.status(403).send('Request parameters are not valid');
             }
         });
-        this.app.post('/', (req, res) => {
+        this.app.post('/wa', (req, res) => {
             const data = req.body;
             this.emit('any', data);
             if (data.object === 'whatsapp_business_account') {
